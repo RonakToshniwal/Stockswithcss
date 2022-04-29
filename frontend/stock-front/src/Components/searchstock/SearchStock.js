@@ -47,7 +47,7 @@ function SearchStock() {
   );
   else{
     return(
-    <table>
+    <table className='table table-hover allstocks'>
             <thead>
               <tr>
                 <th>AttributeS</th>

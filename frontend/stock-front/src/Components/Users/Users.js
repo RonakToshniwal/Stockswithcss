@@ -34,7 +34,7 @@ useEffect(()=>{
   console.log(Object.keys(users.users))
   return (
     <div className="User-page">
-        <table>
+        <table className='table table-hover'>
           <thead>
             <tr>
                 <th>Id</th>
@@ -53,10 +53,10 @@ useEffect(()=>{
                 <td>{users.users[key].name}</td>
                 <td>{users.users[key].age}</td>
                 <td><Link to= '/userstocks' state = {users.users[key].id} >
-                  <button className='btn-outline-success'>Show</button>
+                  <button className='btn btn-outline-success'>Show</button>
                   </Link></td>
                 <td><button value= {users.users[key].id} onClick={onDeleteClick} 
-                className="btn-outline-danger" >Delete</button></td>
+                className="btn btn-outline-danger" >Delete</button></td>
             </tr>
           )
         })    

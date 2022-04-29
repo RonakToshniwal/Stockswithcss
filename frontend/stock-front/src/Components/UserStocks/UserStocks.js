@@ -109,7 +109,9 @@ else
             <tr key ={key}>
                 <td>{key}</td>
                 <td>{data[key].price}</td>
-                <td><button value ={key} 
+                <td><button 
+                className='btn btn-outline-danger'
+                value ={key} 
                 onClick= {onClickDelete}>Delete</button></td>
             </tr>
            
