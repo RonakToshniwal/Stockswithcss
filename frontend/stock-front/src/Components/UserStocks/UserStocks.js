@@ -133,7 +133,7 @@ else
       <select onChange={listChnageHandler} className='form-select  mb-3' name="stock-names" id="stock-names">
       <option value="AAPL">Apple Inc</option>
       <option value="AAT">American Assets Trust, Inc</option>
-      <option value="TCS">Tata Consultancy Services</option>
+      <option value="TCS">Container Store Group Inc-The</option>
       <option value="MSFT">Microsoft Corporation</option>
       <option value="GOOG">Alphabet Inc Class A</option>
       <option value="JPM">JPMorgan Chase and Co</option>
