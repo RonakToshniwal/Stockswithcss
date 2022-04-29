@@ -91,7 +91,7 @@ else
     <div >
 
 
-<table>
+<table className='table table-hover'>
         <thead>
             <tr>
                 <th>Stock Name</th>
