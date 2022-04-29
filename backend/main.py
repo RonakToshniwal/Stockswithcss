@@ -98,10 +98,9 @@ def showAllStocks():
             stock_symbol = stock[2]
             print(stock_symbol)
             index = random.randint(0,6)
-            url = f"https://api.twelvedata.com/price?symbol={stock_symbol}&apikey={keys[index]}"
+            url = f"https://api.twelvedata.com/quote?symbol={stock_symbol}&apikey={keys[index]}"
             response = requests.get(url).json()
-            # print(response)
-            data[stock[1]] = response['price']
+            data[stock[1]] = response
         con.close()
         return data
 
