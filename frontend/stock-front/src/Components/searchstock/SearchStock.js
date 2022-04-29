@@ -1,14 +1,16 @@
 
 import './SearchStock.css';
-import {useReducer, useState} from 'react'
+import { useState} from 'react'
 import axios from 'axios'
-
+import Graph from '../Graph/Graph';
 function SearchStock() {
   const [sname,Changesname]=useState('AAPL')
   const [data,Changedata] = useState({})
-  
+  const [open , setOpenData] = useState([])
+  const [close , setCloseData]  = useState([])
 
   function onSubmithandler(e){
+    e.preventDefault()
     axios({
       method: 'POST',
       url: 'http://127.0.0.1:5000/stock',
@@ -17,14 +19,26 @@ function SearchStock() {
       },
       headers: {'Content-Type': 'application/json'}
     }).then((res)=>{Changedata(res.data)})
-    e.preventDefault()
+    
+    axios({
+      method: 'POST',
+      url: 'http://127.0.0.1:5000/gettimedata',
+      data: {
+        symbol: sname
+      },
+      headers: {'Content-Type': 'application/json'}
+    }).then((res)=>{setOpenData(res.data.open) ; setCloseData(res.data.close); })
+    // console.log(open) ;
+    // console.log(close);
   }
   
   function listChnageHandler(e){
     Changesname(e.target.value)
   }
-  console.log(data)
+
+  
   if(Object.keys(data).length==0)
+
 
   return (
     <div className="searchstock-page">
@@ -47,6 +61,7 @@ function SearchStock() {
   );
   else{
     return(
+    <>
     <table className='table table-hover allstocks'>
             <thead>
               <tr>
@@ -91,8 +106,9 @@ function SearchStock() {
             
             </tr>
             </tbody>
-      
     </table>
+    <Graph open = {open} close = {close}/>
+    </>
     )
   }
 }

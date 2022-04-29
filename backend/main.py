@@ -1,3 +1,4 @@
+from doctest import REPORT_CDIFF
 import json
 import sqlite3
 from urllib.parse import uses_relative
@@ -173,6 +174,22 @@ def deleteUserStocks() :
         con.commit()
         con.close()
     return {"message" : "stock deleted successfully"}
+
+@app.route('/gettimedata', methods = ['POST'])
+def getTimeData() :
+    if request.method == 'POST' :
+        req = request.json
+        stock = req["symbol"]
+        index = random.randint(0,6)
+        url = f"https://api.twelvedata.com/time_series?symbol={stock}&interval=1day&apikey={keys[index]}"
+        data = requests.get(url).json()
+        open_price = []
+        close_price = []
+        for index in data["values"]:
+            open_price.append (index["open"])
+            close_price.append (index["close"])
+        response = {"open" : open_price , "close" : close_price}
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)
