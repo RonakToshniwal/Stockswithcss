@@ -11,9 +11,7 @@ var [users,setUser] = useState({})
     axios.get('http://127.0.0.1:5000/stock/all/')
     .then((response)=>{setUser(response.data); console.log("Users data") ;console.log(users)})
     
-})
-console.log(users)
-
+},[])
     
     
 
@@ -32,8 +30,8 @@ else
       { Object.keys(users).map(function(key, index) 
       {
           return (
-            <Col md={12} xs={12} lg={4}> 
-            <StockCard name= { users[key].name } high= {users[key].high} low= {users[key].low} price= {users[key].previous_close} />
+            <Col key ={key} md={12} xs={12} lg={4}> 
+            <StockCard  name= { users[key].name } high= {users[key].high} low= {users[key].low} price= {users[key].previous_close} />
             </Col>
           )  
       }) }
