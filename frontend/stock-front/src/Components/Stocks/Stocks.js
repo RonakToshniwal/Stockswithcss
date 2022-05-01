@@ -11,13 +11,13 @@ var [users,setUser] = useState({})
     axios.get('http://127.0.0.1:5000/stock/all/')
     .then((response)=>{setUser(response.data); console.log("Users data") ;console.log(users)})
     
-}, [])
+})
 console.log(users)
 
     
     
 
-if (Object.keys(users).length==0){
+if (Object.keys(users).length===0){
     return (<div>Waiting for update</div>)
   }
 
@@ -48,7 +48,7 @@ export default Stocks;
 
 
 
- {/* <StockCard name= { users[0]['name'] } high="100.0" low= "1.0" price="50.0"/>
+ /* <StockCard name= { users[0]['name'] } high="100.0" low= "1.0" price="50.0"/>
       /* <table>
         <thead>
             <tr>
@@ -67,4 +67,4 @@ export default Stocks;
         })
 }
 </tbody>
-</table>  */}
+</table>  */

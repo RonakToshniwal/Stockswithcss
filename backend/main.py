@@ -185,10 +185,16 @@ def getTimeData() :
         data = requests.get(url).json()
         open_price = []
         close_price = []
+        high=[]
+        low=[]
+        date=[]
         for index in data["values"]:
             open_price.append (index["open"])
             close_price.append (index["close"])
-        response = {"open" : open_price , "close" : close_price}
+            high.append(index['high'])
+            low.append(index['low'])
+            date.append(index['datetime'])
+        response = {"open" : open_price , "close" : close_price ,"high":high , "low" : low , "date":date}
     return response
 
 if __name__ == '__main__':

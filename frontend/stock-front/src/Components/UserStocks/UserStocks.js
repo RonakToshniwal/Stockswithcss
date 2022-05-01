@@ -20,7 +20,7 @@ function UserStocks(props) {
       headers: {'Content-Type': 'application/json'}
     }).then( (res) =>{setdata(res.data)})
 
-  },[])
+  })
 function onClickDelete(e){
   console.log("THIS IS THE VALUE")
   console.log(id,e.target.value)

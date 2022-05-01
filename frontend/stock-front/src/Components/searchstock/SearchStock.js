@@ -9,6 +9,11 @@ function SearchStock() {
   const [open , setOpenData] = useState([])
   const [close , setCloseData]  = useState([])
 
+  const [high , setHighData] = useState([])
+  const [low , setLowData]  = useState([])
+
+  const [date , setDate]  = useState([])
+
   function onSubmithandler(e){
     e.preventDefault()
     axios({
@@ -27,7 +32,11 @@ function SearchStock() {
         symbol: sname
       },
       headers: {'Content-Type': 'application/json'}
-    }).then((res)=>{setOpenData(res.data.open) ; setCloseData(res.data.close); })
+    }).then((res)=>{setOpenData(res.data.open) ; setCloseData(res.data.close); 
+    setLowData(res.data.low);
+    setHighData(res.data.high);
+    setDate(res.data.date)
+    })
     // console.log(open) ;
     // console.log(close);
   }
@@ -37,7 +46,7 @@ function SearchStock() {
   }
 
   
-  if(Object.keys(data).length==0)
+  if(Object.keys(data).length===0)
 
 
   return (
@@ -107,7 +116,7 @@ function SearchStock() {
             </tr>
             </tbody>
     </table>
-    <Graph open = {open} close = {close}/>
+    <Graph open = {open} close = {close} high={high} low= {low} date={date}/>
     </>
     )
   }

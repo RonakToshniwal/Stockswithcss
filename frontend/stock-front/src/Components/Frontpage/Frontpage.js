@@ -1,6 +1,5 @@
 import CustomCard from '../Card/Card';
 import { Row,Container,Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import './Frontpage.css';
 import allusers  from '../../assets/allusers.png'
 import search from '../../assets/search.png'

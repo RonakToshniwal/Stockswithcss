@@ -1,38 +1,59 @@
-import React from "react";
-import { Line } from 'react-chartjs-2'; 
-import { Chart as ChartJS } from 'chart.js/auto'
-import { Chart }            from 'react-chartjs-2'
+import React, { useState } from "react";
+import  Chart  from 'react-apexcharts'
+import { useEffect } from "react";
+
 const Graph = (props) => {
-    const data = {
-        labels: ['1','2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
-        datasets: [
+
+  var [data,setData]=useState()
+
+  useEffect(()=>{
+    var labels= props.date
+    var array=[]
+    for (var i=29;i>=0;i--) {
+      var m={x:labels[i],y:[props.open[i],props.high[i],props.low[i],props.close[i]]}
+      array.push(m)
+    }
+    setData(array)
+    console.log(props.date)
+
+
+  },[props])
+    
+        var series= [
           {
-            label: "Open Price",
-            data: props.open  ,
-            fill: true,
-            backgroundColor: "rgba(75,192,192,0.5)",
-            borderColor: "blue"
+            data: data,
+            
           },
-          {
-            label: "Close Price",
-            data: props.close,
-            fill: true,
-            backgroundColor: "rgba(175,12,192,0.2)",
-            borderColor: "red"
+        ];
+
+        var options={
+          chart: {
+            type: 'candlestick',
+            height: 350
+          },
+          title: {
+            text: 'Chart',
+            align: 'center'
+          },
+          xaxis: {
+            type: 'date'
+          },
+          yaxis: {
+            tooltip: {
+              enabled: true
+            }
           }
-        ]
-      };
+        };
+      
+      
+      
+        
+
+      
 
     return ( 
     < div  >
-        <Line style={{ borderColor: "5px red" ,margin: ''}}
-            data={data} 
-            height={400} 
-            width={100}
-            options = {{
-                maintainAspectRatio: false
-            }} 
-        />
+        <Chart options={options} series={series} type="candlestick" height={500} />
     </div> );
 }
  
