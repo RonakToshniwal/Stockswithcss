@@ -32,7 +32,7 @@ function SearchStock() {
         symbol: sname
       },
       headers: {'Content-Type': 'application/json'}
-    }).then((res)=>{setOpenData(res.data.open) ; setCloseData(res.data.close); 
+    },[]).then((res)=>{setOpenData(res.data.open) ; setCloseData(res.data.close); 
     setLowData(res.data.low);
     setHighData(res.data.high);
     setDate(res.data.date)
