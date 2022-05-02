@@ -11,8 +11,7 @@ var [users,setUser] = useState({})
     axios.get('http://127.0.0.1:5000/stock/all/')
     .then((response)=>{setUser(response.data); console.log("Users data") ;console.log(users)})
     
-},[])
-    
+},[users]);
     
 
 if (Object.keys(users).length===0){

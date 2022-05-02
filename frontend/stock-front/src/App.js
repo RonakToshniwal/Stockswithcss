@@ -11,7 +11,7 @@ import CustomNav from './Components/Navbar/Navbar';
 
 function App() {
   return (
-    <>
+    <div style={{backgroundColor: '#a3a9b5'}}>
     <CustomNav/>
     <Router>
         <Routes>
@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/searchstock" element={<SearchStock/>}/>
         </Routes>
     </Router>
-    </>
+    </div>
   )
 }
 

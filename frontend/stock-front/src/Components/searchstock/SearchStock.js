@@ -50,7 +50,7 @@ function SearchStock() {
 
 
   return (
-    <div className="searchstock-page">
+    <div className="searchstock-page" style={{ alignItems: 'center', margin:'15%' , justifyContent: 'center'}}>
         <form onSubmit={onSubmithandler} className='form-group'>
       <label htmlFor="stock-names"><h1>Select stocks:</h1></label>
       <select onChange={listChnageHandler} className='form-select  mb-3' name="stock-names" id="stock-names">
